@@ -3,11 +3,14 @@
  */
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 /**
  * @author Andres.Martinez
  *
  */
-public abstract class Contacto {
+public abstract class Contacto implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private String nombre;
 	private String numero;
 	private String pais;
@@ -71,6 +74,11 @@ public abstract class Contacto {
 	 */
 	public void setCorreo(String correo) {
 		this.correo = correo;
+	}
+	
+	@Override
+	public String toString() {
+		return "Contacto [nombre=" + nombre + ", numero=" + numero + ", pais=" + pais + ", correo=" + correo + "]";
 	}
 	
 	

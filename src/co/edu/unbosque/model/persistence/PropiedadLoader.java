@@ -15,24 +15,16 @@ import java.util.Properties;
 public class PropiedadLoader {
 	
 	private Properties prop;
-	final static String RUTA_PROPIEDADES = "datos/agendaFisica.properties";
 
-	/**
-	 * 
-	 */
-	public PropiedadLoader() {
-		
-		cargarPropiedades();
-	}
 	
-	private void cargarPropiedades() {
+	public void cargarPropiedades(File archivo) {
 		
 		this.prop =  new Properties();
-		File file = new File(RUTA_PROPIEDADES);
+		
 		
 		try {
 			
-			FileInputStream doc = new FileInputStream(file);
+			FileInputStream doc = new FileInputStream(archivo);
 			this.prop.load(doc);
 			doc.close();
 			
