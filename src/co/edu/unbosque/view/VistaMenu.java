@@ -6,6 +6,7 @@ package co.edu.unbosque.view;
 import java.awt.FlowLayout;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -19,7 +20,6 @@ public class VistaMenu extends JPanel{
 	private JButton buscarBtn;
 	private JButton eliminarBtn;
 	
-
 	/**
 	 * 
 	 */
@@ -32,13 +32,22 @@ public class VistaMenu extends JPanel{
 	
 	public void inicializarComponentes(){
 		
+		JLabel eleccionLbl = new JLabel("¿Que quieres hacer?");
+		
 		this.agregarBtn = new JButton("Agregar");
+		this.agregarBtn.setActionCommand("AGREGAR");
 		add(this.agregarBtn);
+		
 		this.modificarBtn = new JButton("Modificar");
+		this.modificarBtn.setActionCommand("MODIFICAR");
 		add(this.modificarBtn);
+		
 		this.buscarBtn = new JButton("Buscar");
+		this.buscarBtn.setActionCommand("BUSCAR");
 		add(this.buscarBtn);
+		
 		this.eliminarBtn = new JButton("Eliminar");
+		this.buscarBtn.setActionCommand("ELIMINAR");
 		add(this.eliminarBtn);
 		
 	}
