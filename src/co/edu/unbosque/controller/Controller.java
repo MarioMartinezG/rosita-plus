@@ -3,22 +3,15 @@
  */
 package co.edu.unbosque.controller;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-import javax.swing.event.AncestorListener;
-
-import co.edu.unbosque.model.Amigo;
 import co.edu.unbosque.model.Contacto;
-import co.edu.unbosque.model.ContactoTrabajo;
 import co.edu.unbosque.model.persistence.PropiedadLoader;
 import co.edu.unbosque.view.VistaMenu;
 import co.edu.unbosque.view.VistaPrincipal;
-import co.edu.unbosque.view.VistaPropiedades;
 
 /**
  * @author Andres.Martinez
@@ -72,8 +65,6 @@ public class Controller implements ActionListener {
 					System.out.println("Nombre del archivo seleccionado: " + archivoSeleccionado.getName());
 					this.propiedades.cargarPropiedades(archivoSeleccionado);
 					this.vista.mostrarMsgInfo("Se cargaron exitosamente los contactos");
-					this.vista.getVistaPropiedades().setVisible(false);
-					this.vistaMenu.setVisible(true);
 					
 					/*
 					 * PENDIENTE VALIDAR CON HELIO
@@ -103,6 +94,7 @@ public class Controller implements ActionListener {
 
 						listaContactos.add(a);
 					}
+					System.out.println("Contactos cargados: " + listaContactos);
 					 */
 					
 				} catch (NullPointerException e2) {
@@ -111,7 +103,6 @@ public class Controller implements ActionListener {
 					this.vista.mostrarMsgError("No se cargo ningun archivo.");
 				}
 
-				System.out.println("Contactos cargados: " + listaContactos);
 			} else {
 				this.vista.mostrarMsgInfo("Ya hay un archivo cargado");
 

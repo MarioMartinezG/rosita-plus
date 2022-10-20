@@ -10,6 +10,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  * @author mariomartinez
@@ -18,31 +19,29 @@ import javax.swing.JOptionPane;
 public class VistaPrincipal extends JFrame {
 
 	private VistaPropiedades vistaPropiedades;
-	//private VistaMenu vistaMenu;
+	private VistaMenu vistaMenu;
 
 	/**
 	 * 
 	 */
 	public VistaPrincipal() {
 		// TODO Auto-generated constructor stub
-
-		setLayout(new BorderLayout());
-
-		inicializarComponentes();
-	}
-
-	public void inicializarComponentes() {
-		this.vistaPropiedades = new VistaPropiedades();
-		//this.vistaMenu = new VistaMenu();
-		//getContentPane().add(this.vistaMenu, BorderLayout.CENTER);		
-		getContentPane().add(this.vistaPropiedades, BorderLayout.CENTER);
-
 		setSize(800, 750);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(true);
 		setTitle("Agenda de rosita plus");
+		setLayout(new BorderLayout());
+
+		inicializarComponentes();
 		setVisible(true);
+	}
+
+	public void inicializarComponentes() {
+		this.vistaPropiedades = new VistaPropiedades();
+		this.vistaMenu = new VistaMenu();
+		getContentPane().add(this.vistaMenu, BorderLayout.CENTER);
+		getContentPane().add(this.vistaPropiedades, BorderLayout.CENTER);
 	}
 
 	public File abrirArchivo() {
@@ -62,6 +61,14 @@ public class VistaPrincipal extends JFrame {
 	public void mostrarMsgInfo(String message) {
 		JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.INFORMATION_MESSAGE);
 	}
+	
+	public void ocultarPanel(JPanel component) {
+		component.setVisible(false);
+	}
+	
+	public void mostrarPanel(JPanel component) {
+		component.setVisible(true);
+	}
 
 	/**
 	 * @return the vistaPropiedades
@@ -80,16 +87,15 @@ public class VistaPrincipal extends JFrame {
 	/**
 	 * @return the vistaMenu
 	 */
-	/*public VistaMenu getVistaMenu() {
+	public VistaMenu getVistaMenu() {
 		return vistaMenu;
-	}*/
+	}
 
 	/**
 	 * @param vistaMenu the vistaMenu to set
 	 */
-	/*public void setVistaMenu(VistaMenu vistaMenu) {
+	public void setVistaMenu(VistaMenu vistaMenu) {
 		this.vistaMenu = vistaMenu;
-	}*/
-	
+	}
 
 }
