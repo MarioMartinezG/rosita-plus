@@ -65,6 +65,7 @@ public class Controller implements ActionListener {
 					System.out.println("Nombre del archivo seleccionado: " + archivoSeleccionado.getName());
 					this.propiedades.cargarPropiedades(archivoSeleccionado);
 					this.vista.mostrarMsgInfo("Se cargaron exitosamente los contactos");
+					System.out.println("Tengo sueñito");
 					
 					/*
 					 * PENDIENTE VALIDAR CON HELIO
