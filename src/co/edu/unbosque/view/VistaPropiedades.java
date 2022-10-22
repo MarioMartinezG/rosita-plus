@@ -14,30 +14,29 @@ import javax.swing.border.TitledBorder;
  * @author mariomartinez
  *
  */
-public class VistaPropiedades extends JPanel{
-	
+public class VistaPropiedades extends JPanel {
+
 	private JButton cargarBtn;
-	
+
 	/**
 	 * 
 	 */
 	public VistaPropiedades() {
 		// TODO Auto-generated constructor stub
 		setLayout(new FlowLayout());
-		
+
 		inicializarComponentes();
 	}
-	
 
 	public void inicializarComponentes() {
-		
-		
-		setBorder( new TitledBorder( "Agenda de Rosita - plus" ) ) ;
-		
+
+		setBorder(new TitledBorder("Agenda de Rosita - plus"));
+
 		JLabel bienvenidaLbl = new JLabel("Ingresa tus amigos");
-		
-		this.cargarBtn = new JButton("Cargar");
-		this.cargarBtn.setActionCommand("Cargar Propiedades");
+		add(bienvenidaLbl);
+
+		this.cargarBtn = new JButton("Cargar Propiedades");
+		this.cargarBtn.setActionCommand("CARGAR");
 		add(this.cargarBtn);
 	}
 
@@ -54,5 +53,5 @@ public class VistaPropiedades extends JPanel{
 	public void setCargarBtn(JButton cargarBtn) {
 		this.cargarBtn = cargarBtn;
 	}
-		
+
 }

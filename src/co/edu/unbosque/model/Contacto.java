@@ -4,6 +4,8 @@
 package co.edu.unbosque.model;
 
 import java.io.Serializable;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Andres.Martinez
@@ -27,6 +29,7 @@ public abstract class Contacto implements Serializable{
 		this.pais = pais;
 		this.correo = correo;
 	}
+	
 	/**
 	 * @return the nombre
 	 */
@@ -78,7 +81,7 @@ public abstract class Contacto implements Serializable{
 	
 	@Override
 	public String toString() {
-		return "Contacto [nombre=" + nombre + ", numero=" + numero + ", pais=" + pais + ", correo=" + correo + "]";
+		return "Nombre del Contacto: " + nombre + ", numero: " + numero + ", pais: " + pais + ", correo: " + correo;
 	}
 	
 	

@@ -14,7 +14,11 @@ public class ContactoTrabajo extends Contacto {
 	public ContactoTrabajo(String nombre, String numero, String pais, String correo, String empresa) {
 		super(nombre, numero, pais, correo);
 		this.empresa=empresa;
-		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + " empresa: " + empresa;
 	}
 
 }

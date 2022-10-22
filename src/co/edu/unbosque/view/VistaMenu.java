@@ -3,9 +3,10 @@
  */
 package co.edu.unbosque.view;
 
-import java.awt.FlowLayout;
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
 
-import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -13,100 +14,149 @@ import javax.swing.JPanel;
  * @author mariomartinez
  *
  */
-public class VistaMenu extends JPanel{
+public class VistaMenu extends JPanel {
+	private JComboBox<String> menu;
+	private JPanel cards;
+	private VistaPropiedades props;
+	private VistaTipoAgregar tipoContacto;
+	private VistaTipoModificar tipoContactoMod;
+	private VistaAgenda vistaAgenda;
+	private VistaEliminar vistaEliminar;
 	
-	private JButton agregarBtn;
-	private JButton modificarBtn;
-	private JButton buscarBtn;
-	private JButton eliminarBtn;
-	
+	final static String OPCION_CARGAR = "Cargar Propiedades";
+	final static String OPCION_AGREGAR = "Agregar Contacto";
+	final static String OPCION_MODIFICAR = "Modificar Contacto";
+	final static String OPCION_BUSCAR = "Buscar contactos";
+	final static String OPCION_ELIMINAR = "Eliminar contacto";
+
 	/**
 	 * 
 	 */
 	public VistaMenu() {
 		// TODO Auto-generated constructor stub
-		setLayout(new FlowLayout());
-		
+		setLayout(new BorderLayout());
+
 		inicializarComponentes();
 	}
-	
-	public void inicializarComponentes(){
+
+	public void inicializarComponentes() {
+		JLabel eleccionLbl = new JLabel("�Que quieres hacer?");
+		add(eleccionLbl);
 		
-		JLabel eleccionLbl = new JLabel("¿Que quieres hacer?");
+		String opciones[] = {OPCION_CARGAR, OPCION_AGREGAR, OPCION_MODIFICAR, OPCION_BUSCAR, OPCION_ELIMINAR};
+		this.menu = new JComboBox<String>(opciones);
+		add(menu, BorderLayout.PAGE_START);
 		
-		this.agregarBtn = new JButton("Agregar");
-		this.agregarBtn.setActionCommand("AGREGAR");
-		add(this.agregarBtn);
+		this.cards = new JPanel(new CardLayout());
+		this.props = new VistaPropiedades();
+		this.tipoContacto = new VistaTipoAgregar();
+		this.tipoContactoMod = new VistaTipoModificar();
+		this.vistaAgenda = new VistaAgenda();
+		this.vistaEliminar = new VistaEliminar();
 		
-		this.modificarBtn = new JButton("Modificar");
-		this.modificarBtn.setActionCommand("MODIFICAR");
-		add(this.modificarBtn);
+		this.cards.add(this.props, OPCION_CARGAR);
+		this.cards.add(this.tipoContacto, OPCION_AGREGAR);
+		this.cards.add(this.tipoContactoMod, OPCION_MODIFICAR);
+		this.cards.add(this.vistaAgenda, OPCION_BUSCAR);
+		this.cards.add(this.vistaEliminar, OPCION_ELIMINAR);
 		
-		this.buscarBtn = new JButton("Buscar");
-		this.buscarBtn.setActionCommand("BUSCAR");
-		add(this.buscarBtn);
-		
-		this.eliminarBtn = new JButton("Eliminar");
-		this.buscarBtn.setActionCommand("ELIMINAR");
-		add(this.eliminarBtn);
-		
+		add(this.cards, BorderLayout.CENTER);
+	}
+	/**
+	 * @return the menu
+	 */
+	public JComboBox<String> getMenu() {
+		return menu;
 	}
 
 	/**
-	 * @return the agregarBtn
+	 * @param menu the menu to set
 	 */
-	public JButton getAgregarBtn() {
-		return agregarBtn;
+	public void setMenu(JComboBox<String> menu) {
+		this.menu = menu;
 	}
 
 	/**
-	 * @param agregarBtn the agregarBtn to set
+	 * @return the cards
 	 */
-	public void setAgregarBtn(JButton agregarBtn) {
-		this.agregarBtn = agregarBtn;
+	public JPanel getCards() {
+		return cards;
 	}
 
 	/**
-	 * @return the modificarBtn
+	 * @param cards the cards to set
 	 */
-	public JButton getModificarBtn() {
-		return modificarBtn;
+	public void setCards(JPanel cards) {
+		this.cards = cards;
 	}
 
 	/**
-	 * @param modificarBtn the modificarBtn to set
+	 * @return the tipoContacto
 	 */
-	public void setModificarBtn(JButton modificarBtn) {
-		this.modificarBtn = modificarBtn;
+	public VistaTipoAgregar getTipoContacto() {
+		return tipoContacto;
 	}
 
 	/**
-	 * @return the buscarBtn
+	 * @param tipoContacto the tipoContacto to set
 	 */
-	public JButton getBuscarBtn() {
-		return buscarBtn;
+	public void setTipoContacto(VistaTipoAgregar tipoContacto) {
+		this.tipoContacto = tipoContacto;
 	}
 
 	/**
-	 * @param buscarBtn the buscarBtn to set
+	 * @return the props
 	 */
-	public void setBuscarBtn(JButton buscarBtn) {
-		this.buscarBtn = buscarBtn;
+	public VistaPropiedades getProps() {
+		return props;
 	}
 
 	/**
-	 * @return the eliminarBtn
+	 * @param props the props to set
 	 */
-	public JButton getEliminarBtn() {
-		return eliminarBtn;
+	public void setProps(VistaPropiedades props) {
+		this.props = props;
 	}
 
 	/**
-	 * @param eliminarBtn the eliminarBtn to set
+	 * @return the tipoContactoMod
 	 */
-	public void setEliminarBtn(JButton eliminarBtn) {
-		this.eliminarBtn = eliminarBtn;
+	public VistaTipoModificar getTipoContactoMod() {
+		return tipoContactoMod;
 	}
-	
 
+	/**
+	 * @param tipoContactoMod the tipoContactoMod to set
+	 */
+	public void setTipoContactoMod(VistaTipoModificar tipoContactoMod) {
+		this.tipoContactoMod = tipoContactoMod;
+	}
+
+	/**
+	 * @return the vistaAgenda
+	 */
+	public VistaAgenda getVistaAgenda() {
+		return vistaAgenda;
+	}
+
+	/**
+	 * @param vistaAgenda the vistaAgenda to set
+	 */
+	public void setVistaAgenda(VistaAgenda vistaAgenda) {
+		this.vistaAgenda = vistaAgenda;
+	}
+
+	/**
+	 * @return the vistaEliminar
+	 */
+	public VistaEliminar getVistaEliminar() {
+		return vistaEliminar;
+	}
+
+	/**
+	 * @param vistaEliminar the vistaEliminar to set
+	 */
+	public void setVistaEliminar(VistaEliminar vistaEliminar) {
+		this.vistaEliminar = vistaEliminar;
+	}
 }

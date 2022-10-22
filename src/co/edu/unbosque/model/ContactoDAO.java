@@ -11,10 +11,12 @@ import java.util.ArrayList;
  */
 public interface ContactoDAO {
 	
-	void insertarContacto(Contacto c);
-	ArrayList<Contacto> leerContactos();
-	void eliminarContacto(Contacto c);
-	void modificarContacto(Contacto c);
+	void insertarContacto(ArrayList<Contacto> lista, Contacto c);
+	Contacto consultarContacto(ArrayList<Contacto> lista, String nombre);
+	String leerContactos(ArrayList<Contacto> lista);
+	void eliminarContacto(ArrayList<Contacto> lista, Contacto c);
+	boolean eliminarContactoPorNombre(ArrayList<Contacto> lista, String nombre);
+	void modificarContacto(ArrayList<Contacto> lista, Contacto c);
 	
 
 }

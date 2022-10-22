@@ -1,24 +1,22 @@
 /**
- * 
+ * Clase encargada de mostrar la ventana con los paneles
  */
 package co.edu.unbosque.view;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.io.File;
 
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.filechooser.FileNameExtensionFilter;
 
 /**
  * @author mariomartinez
  *
  */
 public class VistaPrincipal extends JFrame {
-
-	private VistaPropiedades vistaPropiedades;
 	private VistaMenu vistaMenu;
 
 	/**
@@ -38,14 +36,14 @@ public class VistaPrincipal extends JFrame {
 	}
 
 	public void inicializarComponentes() {
-		this.vistaPropiedades = new VistaPropiedades();
 		this.vistaMenu = new VistaMenu();
 		getContentPane().add(this.vistaMenu, BorderLayout.CENTER);
-		getContentPane().add(this.vistaPropiedades, BorderLayout.CENTER);
 	}
 
 	public File abrirArchivo() {
 		JFileChooser chooser = new JFileChooser();
+		FileNameExtensionFilter filtro = new FileNameExtensionFilter("Archivo de Propiedades", "properties");
+		chooser.setFileFilter(filtro);
 		int valorArchivo = chooser.showOpenDialog(this);
 		if (valorArchivo == JFileChooser.APPROVE_OPTION) {
 			return chooser.getSelectedFile();
@@ -59,7 +57,7 @@ public class VistaPrincipal extends JFrame {
 	}
 	
 	public void mostrarMsgInfo(String message) {
-		JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, message, "Información", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void ocultarPanel(JPanel component) {
@@ -69,21 +67,6 @@ public class VistaPrincipal extends JFrame {
 	public void mostrarPanel(JPanel component) {
 		component.setVisible(true);
 	}
-
-	/**
-	 * @return the vistaPropiedades
-	 */
-	public VistaPropiedades getVistaPropiedades() {
-		return vistaPropiedades;
-	}
-
-	/**
-	 * @param vistaPropiedades the vistaPropiedades to set
-	 */
-	public void setVistaPropiedades(VistaPropiedades vistaPropiedades) {
-		this.vistaPropiedades = vistaPropiedades;
-	}
-
 	/**
 	 * @return the vistaMenu
 	 */
