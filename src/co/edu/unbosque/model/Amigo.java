@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase que implementa el modelo de un contacto tipo Amigo. Hereda de la clase Contacto
  */
 package co.edu.unbosque.model;
 

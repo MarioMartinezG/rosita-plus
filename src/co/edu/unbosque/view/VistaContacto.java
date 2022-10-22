@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase que implementa la vista con los campos para crear un contacto de trabajo
  */
 package co.edu.unbosque.view;
 

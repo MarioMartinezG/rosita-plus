@@ -1,5 +1,5 @@
 /**
- * 
+ * Vista que implementa los campos para eliminar un contacto.
  */
 package co.edu.unbosque.view;
 

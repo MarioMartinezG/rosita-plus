@@ -1,3 +1,6 @@
+/**
+ * Clase Main de la aplicacion.
+ */
 package co.edu.unbosque.controller;
 
 public class Main {

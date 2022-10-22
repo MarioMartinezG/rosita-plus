@@ -1,5 +1,5 @@
 /**
- * 
+ * Vista que implementa los campos para crear un amigo/contacto
  */
 package co.edu.unbosque.view;
 
@@ -23,7 +23,6 @@ public class VistaTipoAgregar extends JPanel{
 	 * 
 	 */
 	public VistaTipoAgregar() {
-		// TODO Auto-generated constructor stub
 		setLayout(new FlowLayout());
 		
 		inicializarComponentes();
@@ -31,7 +30,7 @@ public class VistaTipoAgregar extends JPanel{
 	public void inicializarComponentes() {
 		setBorder(new TitledBorder("Tipo contacto - Agregar"));
 		
-		JLabel tipoLbl = new JLabel("¿Que tipo de contacto quiere agregar? ");
+		JLabel tipoLbl = new JLabel("ï¿½Que tipo de contacto quiere agregar? ");
 		add(tipoLbl);
 		
 		this.amigoBtn = new JButton("Agregar un amigo");

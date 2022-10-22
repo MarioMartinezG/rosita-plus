@@ -1,5 +1,5 @@
 /**
- * 
+ * Vista que implementa los campos para modificar un amigo/contacto
  */
 package co.edu.unbosque.view;
 
@@ -30,7 +30,7 @@ public class VistaTipoModificar extends JPanel{
 	public void inicializarComponentes() {
 		setBorder(new TitledBorder("Tipo contacto - Modificar"));
 		
-		JLabel tipoLbl = new JLabel("¿Que tipo de contacto quiere modificar? ");
+		JLabel tipoLbl = new JLabel("ï¿½Que tipo de contacto quiere modificar? ");
 		add(tipoLbl);
 		
 		this.amigoBtn = new JButton("Modificar un amigo");

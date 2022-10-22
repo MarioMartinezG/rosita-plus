@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase controller del proyecto
  */
 package co.edu.unbosque.controller;
 
@@ -99,6 +99,7 @@ public class Controller implements ActionListener, ItemListener {
 		this.vista.getVistaMenu().getTipoContactoMod().getAmigoBtn().addActionListener(this);
 		this.vista.getVistaMenu().getTipoContactoMod().getContactoBtn().addActionListener(this);
 		this.vista.getVistaMenu().getVistaEliminar().getEliminarBtn().addActionListener(this);
+		this.vista.getVistaMenu().getVistaEstadisticas().getGeneralBtn().addActionListener(this);
 	}
 
 	@Override
@@ -300,6 +301,16 @@ public class Controller implements ActionListener, ItemListener {
 			} else {
 				this.vista.mostrarMsgError("No se encontro el contacto en la agenda");
 			}
+		} else if (comando.equals("GENERAL")) {
+			System.out.println("Click en ver estadisticas");
+			int totalAmigos = this.listaAmigos.size();
+			int totalContactosTrabajo = this.listaContactos.size();
+			int totalContactos = totalAmigos + totalContactosTrabajo;
+			
+			float porcentajeAmigos = (float) (totalAmigos * 100)/totalContactos;
+			float porcentajeContactosTrabajo = (float) (totalContactosTrabajo * 100)/totalContactos;
+			
+			this.vista.mostrarMsgInfo("Total contactos: " + totalContactos + "\n" + "Total amigos: " + totalAmigos + " Porcentaje: " + porcentajeAmigos +"\n" + "Total contactos laborales: " + totalContactosTrabajo + " Porcentaje: " + porcentajeContactosTrabajo);
 		}
 	}
 

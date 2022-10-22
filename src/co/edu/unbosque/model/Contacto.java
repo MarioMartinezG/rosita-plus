@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase padre que implementa los atributos de un contacto.
  */
 package co.edu.unbosque.model;
 

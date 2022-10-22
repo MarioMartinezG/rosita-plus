@@ -1,5 +1,5 @@
 /**
- * 
+ * Vista que implementa el menu de seleccion de las acciones dentro de la aplicacion
  */
 package co.edu.unbosque.view;
 
@@ -22,12 +22,14 @@ public class VistaMenu extends JPanel {
 	private VistaTipoModificar tipoContactoMod;
 	private VistaAgenda vistaAgenda;
 	private VistaEliminar vistaEliminar;
+	private VistaEstadisticas vistaEstadisticas;
 	
 	final static String OPCION_CARGAR = "Cargar Propiedades";
 	final static String OPCION_AGREGAR = "Agregar Contacto";
 	final static String OPCION_MODIFICAR = "Modificar Contacto";
 	final static String OPCION_BUSCAR = "Buscar contactos";
 	final static String OPCION_ELIMINAR = "Eliminar contacto";
+	final static String OPCION_ESTADISTICAS = "Ver estadisticas";
 
 	/**
 	 * 
@@ -43,7 +45,7 @@ public class VistaMenu extends JPanel {
 		JLabel eleccionLbl = new JLabel("�Que quieres hacer?");
 		add(eleccionLbl);
 		
-		String opciones[] = {OPCION_CARGAR, OPCION_AGREGAR, OPCION_MODIFICAR, OPCION_BUSCAR, OPCION_ELIMINAR};
+		String opciones[] = {OPCION_CARGAR, OPCION_AGREGAR, OPCION_MODIFICAR, OPCION_BUSCAR, OPCION_ELIMINAR, OPCION_ESTADISTICAS};
 		this.menu = new JComboBox<String>(opciones);
 		add(menu, BorderLayout.PAGE_START);
 		
@@ -53,12 +55,14 @@ public class VistaMenu extends JPanel {
 		this.tipoContactoMod = new VistaTipoModificar();
 		this.vistaAgenda = new VistaAgenda();
 		this.vistaEliminar = new VistaEliminar();
+		this.vistaEstadisticas = new VistaEstadisticas();
 		
 		this.cards.add(this.props, OPCION_CARGAR);
 		this.cards.add(this.tipoContacto, OPCION_AGREGAR);
 		this.cards.add(this.tipoContactoMod, OPCION_MODIFICAR);
 		this.cards.add(this.vistaAgenda, OPCION_BUSCAR);
 		this.cards.add(this.vistaEliminar, OPCION_ELIMINAR);
+		this.cards.add(this.vistaEstadisticas, OPCION_ESTADISTICAS);
 		
 		add(this.cards, BorderLayout.CENTER);
 	}
@@ -158,5 +162,19 @@ public class VistaMenu extends JPanel {
 	 */
 	public void setVistaEliminar(VistaEliminar vistaEliminar) {
 		this.vistaEliminar = vistaEliminar;
+	}
+
+	/**
+	 * @return the vistaEstadisticas
+	 */
+	public VistaEstadisticas getVistaEstadisticas() {
+		return vistaEstadisticas;
+	}
+
+	/**
+	 * @param vistaEstadisticas the vistaEstadisticas to set
+	 */
+	public void setVistaEstadisticas(VistaEstadisticas vistaEstadisticas) {
+		this.vistaEstadisticas = vistaEstadisticas;
 	}
 }

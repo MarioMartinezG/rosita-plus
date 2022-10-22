@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase que implementa la vista que muestra todos los contactos
  */
 package co.edu.unbosque.view;
 

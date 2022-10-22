@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase que implementa la logica de interaccion con los archivos de propiedades
  */
 package co.edu.unbosque.model.persistence;
 

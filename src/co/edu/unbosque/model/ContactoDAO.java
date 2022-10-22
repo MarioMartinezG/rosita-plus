@@ -1,5 +1,5 @@
 /**
- * 
+ * Interface con los métodos del CRUD de la agenda
  */
 package co.edu.unbosque.model;
 

@@ -1,5 +1,5 @@
 /**
- * 
+ * Vista que implementa los campos para cargar las propiedades
  */
 package co.edu.unbosque.view;
 

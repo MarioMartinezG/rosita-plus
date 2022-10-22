@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase que implementa el modelo de tipo ContactoTrabajo. Hereda de la clase Contacto
  */
 package co.edu.unbosque.model;
 

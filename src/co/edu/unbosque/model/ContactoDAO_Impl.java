@@ -1,5 +1,5 @@
 /**
- * 
+ * Clase que implementa la inteface ContractoDAO
  */
 package co.edu.unbosque.model;
 
