@@ -122,7 +122,7 @@ public class Controller implements ActionListener, ItemListener {
 					}
 
 					this.archivo.escribirPaises(paises);
-					
+
 					for (String pais : paises) {
 						this.vistaAmigo.getPaisCbx().addItem(pais);
 						this.vistaContacto.getPaisCbx().addItem(pais);
@@ -138,12 +138,8 @@ public class Controller implements ActionListener, ItemListener {
 			}
 
 			if (this.listaAmigos == null || this.listaAmigos.size() == 0) {
-				/*
-				 * PENDIENTE VALIDAR CON HELIO
-				 */
 				int cantContactos = Integer.parseInt(this.propiedades.getProp().getProperty("contacto.cantidad"));
 
-				// preguntar pa que sirve la propiedad de cantidad
 				for (int i = 1; i <= 3; i++) {
 					String nombre = this.propiedades.getProp().getProperty("contacto.nombre" + i);
 					String empresa = this.propiedades.getProp().getProperty("contacto.empresa" + i);
@@ -186,23 +182,20 @@ public class Controller implements ActionListener, ItemListener {
 				int resultado = JOptionPane.showConfirmDialog(null, this.vistaAmigo, "Agregar amigo",
 						JOptionPane.OK_CANCEL_OPTION);
 				if (resultado == JOptionPane.OK_OPTION) {
-					System.out.println("Nombre amigo: " + this.vistaAmigo.getNombreTxf().getText());
-					System.out.println("Pais amigo: " + this.vistaAmigo.getPaisCbx().getSelectedItem());
-					System.out.println("Telefono amigo: " + this.vistaAmigo.getTelefonoTxf().getText());
-					System.out.println("Correo amigo: " + this.vistaAmigo.getCorreoTxf().getText());
-
 					String nombre = this.vistaAmigo.getNombreTxf().getText();
 					String pais = (String) this.vistaAmigo.getPaisCbx().getSelectedItem();
 					String telefono = this.vistaAmigo.getTelefonoTxf().getText();
 					String correo = this.vistaAmigo.getCorreoTxf().getText();
 
-					if (dao.consultarContacto(this.listaAmigos, nombre) == null) {
+					if (dao.consultarContacto(this.listaAmigos, nombre) == null && validarNombre(nombre)
+							&& validarCorreo(correo) && validarNumero(telefono)) {
 						Amigo nuevoAmigo = new Amigo(nombre, telefono, pais, correo);
 						dao.insertarContacto(this.listaAmigos, nuevoAmigo);
 						this.archivo.escribirEnArchivoAmigos(this.listaAmigos);
 						this.vista.mostrarMsgInfo("Contacto agregado exitosamente");
 					} else {
-						this.vista.mostrarMsgError("El contacto ingresado ya existe");
+						this.vista.mostrarMsgError(
+								"No fue posible crear el contacto. Recuerde: \n- El contacto no debe existir en la agenda\n- El nombre no debe contener números ni caracteres especiales\n- El correo debe terminar en \"@correo.com\"\n- El teléfono no debería tener letras y debe tener una longitud de 9 dígitos separado por \"-\" cada 3 dígitos");
 					}
 				}
 
@@ -217,25 +210,21 @@ public class Controller implements ActionListener, ItemListener {
 				int resultado = JOptionPane.showConfirmDialog(null, this.vistaContacto, "Agregar contacto",
 						JOptionPane.OK_CANCEL_OPTION);
 				if (resultado == JOptionPane.OK_OPTION) {
-					System.out.println("Nombre contacto: " + this.vistaContacto.getNombreTxf().getText());
-					System.out.println("Empresa contacto: " + this.vistaContacto.getEmpresaTxf().getText());
-					System.out.println("Pais contacto: " + this.vistaContacto.getPaisCbx().getSelectedItem());
-					System.out.println("Telefono contacto: " + this.vistaContacto.getTelefonoManTxf().getText());
-					System.out.println("Correo contacto: " + this.vistaContacto.getCorreoTxf().getText());
-
 					String nombre = this.vistaContacto.getNombreTxf().getText();
 					String empresa = this.vistaContacto.getEmpresaTxf().getText();
 					String pais = (String) this.vistaContacto.getPaisCbx().getSelectedItem();
 					String telefono = this.vistaContacto.getTelefonoManTxf().getText();
 					String correo = this.vistaContacto.getCorreoTxf().getText();
 
-					if (dao.consultarContacto(this.listaContactos, nombre) == null) {
+					if (dao.consultarContacto(this.listaContactos, nombre) == null && validarNombre(nombre)
+							&& validarCorreo(correo) && validarNumero(telefono)) {
 						ContactoTrabajo nuevoContacto = new ContactoTrabajo(nombre, telefono, pais, correo, empresa);
 						dao.insertarContacto(this.listaContactos, nuevoContacto);
 						this.archivo.escribirEnArchivoContactos(this.listaContactos);
 						this.vista.mostrarMsgInfo("Contacto agregado exitosamente");
 					} else {
-						this.vista.mostrarMsgError("El contacto ingresado ya existe");
+						this.vista.mostrarMsgError(
+								"No fue posible crear el contacto. Recuerde: \n- El contacto no debe existir en la agenda\n- El nombre no debe contener números ni caracteres especiales\n- El correo debe terminar en \"@correo.com\"\n- El teléfono no debería tener letras y debe tener una longitud de 9 dígitos separado por \"-\" cada 3 dígitos");
 					}
 				}
 			}
@@ -249,23 +238,20 @@ public class Controller implements ActionListener, ItemListener {
 				int resultado = JOptionPane.showConfirmDialog(null, this.vistaAmigo, "Modificar amigo",
 						JOptionPane.OK_CANCEL_OPTION);
 				if (resultado == JOptionPane.OK_OPTION) {
-					System.out.println("Nombre amigo: " + this.vistaAmigo.getNombreTxf().getText());
-					System.out.println("Pais amigo: " + this.vistaAmigo.getPaisCbx().getSelectedItem());
-					System.out.println("Telefono amigo: " + this.vistaAmigo.getTelefonoTxf().getText());
-					System.out.println("Correo amigo: " + this.vistaAmigo.getCorreoTxf().getText());
-
 					String nombre = this.vistaAmigo.getNombreTxf().getText();
 					String pais = (String) this.vistaAmigo.getPaisCbx().getSelectedItem();
 					String telefono = this.vistaAmigo.getTelefonoTxf().getText();
 					String correo = this.vistaAmigo.getCorreoTxf().getText();
 
-					if (dao.consultarContacto(this.listaAmigos, nombre) != null) {
+					if (dao.consultarContacto(this.listaAmigos, nombre) != null && validarNombre(nombre)
+							&& validarCorreo(correo) && validarNumero(telefono)) {
 						Amigo modAmigo = new Amigo(nombre, telefono, pais, correo);
 						dao.modificarContacto(this.listaAmigos, modAmigo);
 						this.archivo.escribirEnArchivoAmigos(this.listaAmigos);
 						this.vista.mostrarMsgInfo("Contacto modificado exitosamente");
 					} else {
-						this.vista.mostrarMsgError("El amigo que quiere modificar no existe");
+						this.vista.mostrarMsgError(
+								"No fue posible modificar el contacto. Recuerde: \n- El contacto debe existir en la agenda\n- El nombre no debe contener números ni caracteres especiales\n- El correo debe terminar en \"@correo.com\"\n- El teléfono no debería tener letras y debe tener una longitud de 9 dígitos separado por \"-\" cada 3 dígitos");
 					}
 				}
 			}
@@ -279,25 +265,21 @@ public class Controller implements ActionListener, ItemListener {
 				int resultado = JOptionPane.showConfirmDialog(null, this.vistaContacto, "Modificar contacto",
 						JOptionPane.OK_CANCEL_OPTION);
 				if (resultado == JOptionPane.OK_OPTION) {
-					System.out.println("Nombre contacto: " + this.vistaContacto.getNombreTxf().getText());
-					System.out.println("Empresa contacto: " + this.vistaContacto.getEmpresaTxf().getText());
-					System.out.println("Pais contacto: " + this.vistaContacto.getPaisCbx().getSelectedItem());
-					System.out.println("Telefono contacto: " + this.vistaContacto.getTelefonoManTxf().getText());
-					System.out.println("Correo contacto: " + this.vistaContacto.getCorreoTxf().getText());
-
 					String nombre = this.vistaContacto.getNombreTxf().getText();
 					String empresa = this.vistaContacto.getEmpresaTxf().getText();
 					String pais = (String) this.vistaContacto.getPaisCbx().getSelectedItem();
 					String telefono = this.vistaContacto.getTelefonoManTxf().getText();
 					String correo = this.vistaContacto.getCorreoTxf().getText();
 
-					if (dao.consultarContacto(this.listaContactos, nombre) != null) {
+					if (dao.consultarContacto(this.listaContactos, nombre) != null && validarNombre(nombre)
+							&& validarCorreo(correo) && validarNumero(telefono)) {
 						ContactoTrabajo modContacto = new ContactoTrabajo(nombre, telefono, pais, correo, empresa);
 						dao.modificarContacto(this.listaContactos, modContacto);
 						this.archivo.escribirEnArchivoContactos(this.listaContactos);
 						this.vista.mostrarMsgInfo("Contacto modificado exitosamente");
 					} else {
-						this.vista.mostrarMsgError("El contacto que quiere modificar no existe");
+						this.vista.mostrarMsgError(
+								"No fue posible modificar el contacto. Recuerde: \n- El contacto debe existir en la agenda\n- El nombre no debe contener números ni caracteres especiales\n- El correo debe terminar en \"@correo.com\"\n- El teléfono no debería tener letras y debe tener una longitud de 9 dígitos separado por \"-\" cada 3 dígitos");
 					}
 				}
 			}
@@ -319,7 +301,6 @@ public class Controller implements ActionListener, ItemListener {
 				this.vista.mostrarMsgError("No se encontro el contacto en la agenda");
 			}
 		}
-
 	}
 
 	@Override
@@ -336,17 +317,32 @@ public class Controller implements ActionListener, ItemListener {
 		}
 	}
 
-	public boolean validarNombre(String nombre) {
-		Pattern regEx = Pattern.compile("^[A-Z][a-z]$");
-		Matcher mat = regEx.matcher(nombre);
-
-		if (mat.matches()) {
-			System.out.println("Nombre valido");
-			return true;
-		} else {
-			System.out.println("Nombre NO valido");
-			return false;
+	private boolean validarNombre(String nombre) {
+		char[] arrNombre = nombre.toCharArray();
+		for (char c : arrNombre) {
+			if (!Character.isLetter(c)) {
+				return false;
+			}
 		}
+		return true;
 	}
 
+	private boolean validarCorreo(String correo) {
+		Pattern regEx = Pattern.compile(
+				"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+		Matcher mat = regEx.matcher(correo);
+		if (mat.find()) {
+			return true;
+		}
+		return false;
+	}
+
+	private boolean validarNumero(String numero) {
+		Pattern regEx = Pattern.compile("^\\d{3}\\-\\d{3}-\\d{3}$");
+		Matcher mat = regEx.matcher(numero);
+		if (mat.find()) {
+			return true;
+		}
+		return false;
+	}
 }
