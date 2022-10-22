@@ -31,7 +31,7 @@ public class ContactoDAO_Impl implements ContactoDAO{
 	public String leerContactos(ArrayList<Contacto> lista) {
 		String datos = "";
 		for (Contacto contacto : lista) {
-			datos += contacto.toString() + "\n";
+			datos += contacto.toString() + "\n" + "\n";
 		}
 		return datos;
 	}

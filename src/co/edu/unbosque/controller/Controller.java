@@ -37,7 +37,6 @@ public class Controller implements ActionListener, ItemListener {
 	private VistaPrincipal vista;
 	private VistaAmigo vistaAmigo;
 	private VistaContacto vistaContacto;
-	private VistaEliminar vistaEliminar;
 	private ContactoDAO_Impl dao;
 	private ArrayList<Contacto> listaContactos;
 	private ArrayList<Contacto> listaAmigos;
@@ -57,7 +56,6 @@ public class Controller implements ActionListener, ItemListener {
 		this.vista = new VistaPrincipal();
 		this.vistaAmigo = new VistaAmigo();
 		this.vistaContacto = new VistaContacto();
-		this.vistaEliminar = new VistaEliminar();
 		this.dao = new ContactoDAO_Impl();
 		this.listaContactos = new ArrayList<>();
 		this.listaAmigos = new ArrayList<>();

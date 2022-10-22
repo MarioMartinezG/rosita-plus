@@ -24,7 +24,7 @@ public class VistaPrincipal extends JFrame {
 	 */
 	public VistaPrincipal() {
 		// TODO Auto-generated constructor stub
-		setSize(800, 750);
+		setSize(600, 350);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 		setResizable(true);
@@ -57,7 +57,7 @@ public class VistaPrincipal extends JFrame {
 	}
 	
 	public void mostrarMsgInfo(String message) {
-		JOptionPane.showMessageDialog(null, message, "Información", JOptionPane.INFORMATION_MESSAGE);
+		JOptionPane.showMessageDialog(null, message, "Informaciï¿½n", JOptionPane.INFORMATION_MESSAGE);
 	}
 	
 	public void ocultarPanel(JPanel component) {
